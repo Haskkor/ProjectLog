@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
@@ -43,8 +44,11 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private boolean active;
+	@OneToMany(mappedBy = "user")
+	@Transient
+	private Set<Workout> workouts;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "app_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 
 	public int getId() {
@@ -55,6 +59,14 @@ public class User {
 		this.id = id;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -63,12 +75,12 @@ public class User {
 		this.password = password;
 	}
 
-	public String getName() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setName(String name) {
-		this.firstName = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -79,20 +91,20 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public boolean isActive() {
 		return active;
 	}
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Set<Workout> getWorkouts() {
+		return workouts;
+	}
+
+	public void setWorkouts(Set<Workout> workouts) {
+		this.workouts = workouts;
 	}
 
 	public Set<Role> getRoles() {
@@ -114,6 +126,7 @@ public class User {
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((roles == null) ? 0 : roles.hashCode());
+		result = prime * result + ((workouts == null) ? 0 : workouts.hashCode());
 		return result;
 	}
 
@@ -154,6 +167,11 @@ public class User {
 			if (other.roles != null)
 				return false;
 		} else if (!roles.equals(other.roles))
+			return false;
+		if (workouts == null) {
+			if (other.workouts != null)
+				return false;
+		} else if (!workouts.equals(other.workouts))
 			return false;
 		return true;
 	}

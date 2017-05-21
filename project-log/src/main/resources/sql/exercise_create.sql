@@ -2,7 +2,7 @@ DROP TABLE public.exercise;
 
 CREATE TABLE public.exercise
 (
-    id integer NOT NULL DEFAULT nextval('exercise_id_seq'::regclass),
+    exercise_id integer NOT NULL DEFAULT nextval('exercise_id_seq'::regclass),
     name character varying(100) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT exercise_pkey PRIMARY KEY (id)
 )

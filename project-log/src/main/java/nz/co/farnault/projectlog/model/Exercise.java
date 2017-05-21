@@ -14,18 +14,18 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "exercise")
+public class Exercise {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "role_id")
+	@Column(name = "exercise_id")
 	private int id;
 	@Column(name = "name")
 	private String name;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "app_user_role", joinColumns = @JoinColumn(name = "role_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private Set<User> users;
+	@JoinTable(name = "muscle_group_exercise", joinColumns = @JoinColumn(name = "exercise_id"), inverseJoinColumns = @JoinColumn(name = "muscle_group_id"))
+	private Set<MuscleGroup> muscleGroups;
 
 	public int getId() {
 		return id;
@@ -43,12 +43,12 @@ public class Role {
 		this.name = name;
 	}
 
-	public Set<User> getUsers() {
-		return users;
+	public Set<MuscleGroup> getMuscleGroups() {
+		return muscleGroups;
 	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setMuscleGroups(Set<MuscleGroup> muscleGroups) {
+		this.muscleGroups = muscleGroups;
 	}
 
 	@Override
@@ -56,8 +56,8 @@ public class Role {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
+		result = prime * result + ((muscleGroups == null) ? 0 : muscleGroups.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		return result;
 	}
 
@@ -69,18 +69,18 @@ public class Role {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Role other = (Role) obj;
+		Exercise other = (Exercise) obj;
 		if (id != other.id)
+			return false;
+		if (muscleGroups == null) {
+			if (other.muscleGroups != null)
+				return false;
+		} else if (!muscleGroups.equals(other.muscleGroups))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (users == null) {
-			if (other.users != null)
-				return false;
-		} else if (!users.equals(other.users))
 			return false;
 		return true;
 	}
