@@ -1,8 +1,8 @@
-DROP TABLE public.role;
+DROP TABLE projectlog.role;
 
-CREATE TABLE public.role
+CREATE TABLE projectlog.role
 (
-    role_id integer NOT NULL DEFAULT nextval('user_profile_id_seq'::regclass),
+    role_id SERIAL NOT NULL,
     name character varying(30) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT user_profile_pkey PRIMARY KEY (id)
 )
@@ -11,5 +11,5 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.role
+ALTER TABLE projectlog.role
     OWNER to postgres;

@@ -1,14 +1,14 @@
-DROP TABLE public.workout;
+DROP TABLE projectlog.workout;
 
-CREATE TABLE public.workout
+CREATE TABLE projectlog.workout
 (
-    workout_id integer NOT NULL DEFAULT nextval('workout_id_seq'::regclass),
+    workout_id SERIAL NOT NULL,
     name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     date_workout date NOT NULL,
     user_id integer NOT NULL,
     CONSTRAINT workout_pkey PRIMARY KEY (workout_id),
     CONSTRAINT workout_user_id_fkey FOREIGN KEY (user_id)
-        REFERENCES public.app_user (user_id) MATCH SIMPLE
+        REFERENCES projectlog.app_user (user_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
 )
@@ -17,5 +17,5 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.workout
+ALTER TABLE projectlog.workout
     OWNER to postgres;

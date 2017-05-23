@@ -1,8 +1,8 @@
-DROP TABLE public.muscle_group;
+DROP TABLE projectlog.muscle_group;
 
-CREATE TABLE public.muscle_group
+CREATE TABLE projectlog.muscle_group
 (
-    muscle_group_id integer NOT NULL DEFAULT nextval('muscle_group_id_seq'::regclass),
+    muscle_group_id SERIAL NOT NULL,
     name character varying(30) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT muscle_group_pkey PRIMARY KEY (id)
 )
@@ -11,5 +11,5 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.muscle_group
+ALTER TABLE projectlog.muscle_group
     OWNER to postgres;
