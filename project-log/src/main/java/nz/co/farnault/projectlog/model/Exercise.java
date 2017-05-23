@@ -26,6 +26,9 @@ public class Exercise {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "muscle_group_exercise", joinColumns = @JoinColumn(name = "exercise_id"), inverseJoinColumns = @JoinColumn(name = "muscle_group_id"))
 	private Set<MuscleGroup> muscleGroups;
+	@OneToMany(mappedBy = "exercise")
+	@Transient
+	private Set<Set> sets;
 
 	public int getId() {
 		return id;
@@ -49,6 +52,14 @@ public class Exercise {
 
 	public void setMuscleGroups(Set<MuscleGroup> muscleGroups) {
 		this.muscleGroups = muscleGroups;
+	}
+
+	public Set<Set> getSets() {
+		return sets;
+	}
+
+	public void setSets(Set<Set> sets) {
+		this.sets = sets;
 	}
 
 	@Override

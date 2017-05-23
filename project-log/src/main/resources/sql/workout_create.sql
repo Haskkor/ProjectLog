@@ -3,7 +3,7 @@ DROP TABLE projectlog.workout;
 CREATE TABLE projectlog.workout
 (
     workout_id SERIAL NOT NULL,
-    name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    name character varying(50) NOT NULL,
     date_workout date NOT NULL,
     user_id integer NOT NULL,
     CONSTRAINT workout_pkey PRIMARY KEY (workout_id),

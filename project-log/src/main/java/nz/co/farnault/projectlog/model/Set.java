@@ -15,6 +15,9 @@ public class Set {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "workout", joinColumns = @JoinColumn(name = "set_id"), inverseJoinColumns = @JoinColumn(name = "workout_id"))
 	private Set<Workout> workouts;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "exercise_id")
+	private Exercise exercise;
 
 	public int getId() {
 		return id;
@@ -46,5 +49,13 @@ public class Set {
 
 	public void setWorkouts(Set<Workout> workouts) {
 		this.workouts = workouts;
+	}
+
+	public Exercise getExercise() {
+		return exercise;
+	}
+
+	public void setExercise(Exercise exercise) {
+		this.exercise = exercise;
 	}
 }
