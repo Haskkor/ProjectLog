@@ -30,7 +30,7 @@ public class Exercise {
 	private Set<MuscleGroup> muscleGroups;
 	@OneToMany(mappedBy = "exercise")
 	@Transient
-	private Set<Set> sets;
+	private Set<WorkingSet> workingSets;
 
 	public int getId() {
 		return id;
@@ -56,11 +56,11 @@ public class Exercise {
 		this.muscleGroups = muscleGroups;
 	}
 
-	public Set<Set> getSets() {
-		return sets;
+	public Set<WorkingSet> getWorkingSets() {
+		return workingSets;
 	}
 
-	public void setSets(Set<Set> sets) {
-		this.sets = sets;
+	public void setWorkingSets(Set<WorkingSet> workingSets) {
+		this.workingSets = workingSets;
 	}
 }

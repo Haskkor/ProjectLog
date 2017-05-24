@@ -8,7 +8,7 @@ CREATE TABLE projectlog.app_user
     last_name character varying(30) NOT NULL,
     email character varying(30) NOT NULL,
     active boolean NOT NULL,
-    CONSTRAINT app_user_pkey PRIMARY KEY (id)
+    CONSTRAINT app_user_pkey PRIMARY KEY (user_id)
 )
 WITH (
     OIDS = FALSE

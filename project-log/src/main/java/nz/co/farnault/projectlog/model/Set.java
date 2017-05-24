@@ -14,19 +14,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "set")
-public class Set {
+@Table(name = "working_set")
+public class WorkingSet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "set_id")
+	@Column(name = "working_set_id")
 	private int id;
 	@Column(name = "reps")
 	private String reps;
 	@Column(name = "weights")
 	private String weights;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "workout", joinColumns = @JoinColumn(name = "set_id"), inverseJoinColumns = @JoinColumn(name = "workout_id"))
+	@JoinTable(name = "workout", joinColumns = @JoinColumn(name = "working_set_id"), inverseJoinColumns = @JoinColumn(name = "workout_id"))
 	private Set<Workout> workouts;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "exercise_id")

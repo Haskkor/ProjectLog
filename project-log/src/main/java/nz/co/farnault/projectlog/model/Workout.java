@@ -31,8 +31,8 @@ public class Workout {
 	@JoinColumn(name = "user_id")
 	private User user;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "set", joinColumns = @JoinColumn(name = "workout_id"), inverseJoinColumns = @JoinColumn(name = "set_id"))
-	private Set<Set> sets;
+	@JoinTable(name = "working_set", joinColumns = @JoinColumn(name = "workout_id"), inverseJoinColumns = @JoinColumn(name = "working_set_id"))
+	private Set<WorkingSet> workingSets;
 
 	public int getId() {
 		return id;
@@ -66,11 +66,11 @@ public class Workout {
 		this.user = user;
 	}
 
-	public Set<Set> getSets() {
-		return sets;
+	public Set<WorkingSet> getWorkingSets() {
+		return workingSets;
 	}
 
-	public void setSets(Set<Set> sets) {
-		this.sets = sets;
+	public void setWorkingSets(Set<WorkingSet> workingSets) {
+		this.workingSets = workingSets;
 	}
 }

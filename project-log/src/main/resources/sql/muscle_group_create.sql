@@ -4,7 +4,7 @@ CREATE TABLE projectlog.muscle_group
 (
     muscle_group_id SERIAL NOT NULL,
     name character varying(30) NOT NULL,
-    CONSTRAINT muscle_group_pkey PRIMARY KEY (id)
+    CONSTRAINT muscle_group_pkey PRIMARY KEY (muscle_group_id)
 )
 WITH (
     OIDS = FALSE
