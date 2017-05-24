@@ -1,4 +1,4 @@
-DROP TABLE projectlog.exercise;
+--DROP TABLE projectlog.exercise;
 
 CREATE TABLE projectlog.exercise
 (

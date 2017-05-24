@@ -1,4 +1,4 @@
-DROP TABLE projectlog.app_user;
+--DROP TABLE projectlog.app_user;
 
 CREATE TABLE projectlog.app_user
 (

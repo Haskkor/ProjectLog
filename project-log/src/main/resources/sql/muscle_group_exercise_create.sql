@@ -1,4 +1,4 @@
-DROP TABLE projectlog.muscle_group_exercise;
+--DROP TABLE projectlog.muscle_group_exercise;
 
 CREATE TABLE projectlog.muscle_group_exercise
 (

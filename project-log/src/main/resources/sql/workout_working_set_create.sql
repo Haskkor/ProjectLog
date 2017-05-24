@@ -1,4 +1,4 @@
-DROP TABLE projectlog.workout_working_set;
+--DROP TABLE projectlog.workout_working_set;
 
 CREATE TABLE projectlog.workout_working_set
 (

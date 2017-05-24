@@ -1,4 +1,4 @@
-DROP TABLE projectlog.role;
+--DROP TABLE projectlog.role;
 
 CREATE TABLE projectlog.role
 (

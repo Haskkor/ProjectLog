@@ -1,4 +1,4 @@
-DROP TABLE projectlog.app_user_role;
+--DROP TABLE projectlog.app_user_role;
 
 CREATE TABLE projectlog.app_user_role
 (
