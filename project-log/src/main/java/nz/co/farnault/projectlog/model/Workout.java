@@ -1,6 +1,7 @@
 package nz.co.farnault.projectlog.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
