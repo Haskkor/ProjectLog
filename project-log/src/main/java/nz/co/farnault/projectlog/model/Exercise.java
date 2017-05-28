@@ -56,11 +56,11 @@ public class Exercise {
 		this.muscleGroups = muscleGroups;
 	}
 
-	public Set<WorkingSet> getWorkingSets() {
-		return workingSets;
-	}
-
-	public void setWorkingSets(Set<WorkingSet> workingSets) {
-		this.workingSets = workingSets;
-	}
+	// public Set<WorkingSet> getWorkingSets() {
+	// return workingSets;
+	// }
+	//
+	// public void setWorkingSets(Set<WorkingSet> workingSets) {
+	// this.workingSets = workingSets;
+	// }
 }

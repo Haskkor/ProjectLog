@@ -4,7 +4,7 @@ CREATE TABLE projectlog.workout_working_set
 (
     workout_id bigint NOT NULL,
     working_set_id bigint NOT NULL,
-    CONSTRAINT workout_set_pkey PRIMARY KEY (workout_id, working_set_id),
+    CONSTRAINT workout_working_set_pkey PRIMARY KEY (workout_id, working_set_id),
     CONSTRAINT workout_fkey FOREIGN KEY (workout_id)
         REFERENCES projectlog.workout (workout_id) MATCH SIMPLE
         ON UPDATE NO ACTION

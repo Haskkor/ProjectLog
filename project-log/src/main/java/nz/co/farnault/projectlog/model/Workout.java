@@ -32,7 +32,7 @@ public class Workout {
 	@JoinColumn(name = "user_id")
 	private User user;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "working_set", joinColumns = @JoinColumn(name = "workout_id"), inverseJoinColumns = @JoinColumn(name = "working_set_id"))
+	@JoinTable(name = "working_set", joinColumns = @JoinColumn(name = "workout_id", referencedColumnName = "workout_id"), inverseJoinColumns = @JoinColumn(name = "working_set_id", referencedColumnName = "working_set_id"))
 	private Set<WorkingSet> workingSets;
 
 	public int getId() {
