@@ -7,8 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,8 +19,7 @@ import javax.persistence.Table;
 public class Workout {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "workout_id")
+	@Column(columnDefinition = "serial", name = "workout_id")
 	private int id;
 	@Column(name = "name")
 	private String name;
@@ -32,7 +29,7 @@ public class Workout {
 	@JoinColumn(name = "user_id")
 	private User user;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "working_set", joinColumns = @JoinColumn(name = "workout_id", referencedColumnName = "workout_id"), inverseJoinColumns = @JoinColumn(name = "working_set_id", referencedColumnName = "working_set_id"))
+	@JoinTable(name = "workout_working_set", joinColumns = @JoinColumn(name = "workout_id"), inverseJoinColumns = @JoinColumn(name = "working_set_id"))
 	private Set<WorkingSet> workingSets;
 
 	public int getId() {

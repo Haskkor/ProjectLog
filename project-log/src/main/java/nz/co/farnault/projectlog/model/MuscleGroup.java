@@ -5,8 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,20 +16,19 @@ import javax.persistence.Table;
 public class MuscleGroup {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "muscle_group_id")
-	private int id;
+	@Column(columnDefinition = "serial", name = "muscle_group_id")
+	private Long id;
 	@Column(name = "name")
 	private String name;
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "muscle_group_exercise", joinColumns = @JoinColumn(name = "muscle_group_id"), inverseJoinColumns = @JoinColumn(name = "exercise_id"))
 	private Set<Exercise> exercises;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

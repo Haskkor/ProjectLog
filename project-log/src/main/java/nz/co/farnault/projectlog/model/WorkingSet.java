@@ -2,13 +2,13 @@ package nz.co.farnault.projectlog.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,24 +18,24 @@ import javax.persistence.Table;
 public class WorkingSet {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "working_set_id")
-	private int id;
+	@Column(columnDefinition = "serial", name = "working_set_id")
+	private Long id;
 	@Column(name = "reps")
 	private String reps;
 	@Column(name = "weights")
 	private String weights;
-	@ManyToMany(mappedBy = "workingSets")
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "workout_working_set", joinColumns = @JoinColumn(name = "working_set_id"), inverseJoinColumns = @JoinColumn(name = "workout_id"))
 	private Set<Workout> workouts;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "exercise_id")
 	private Exercise exercise;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

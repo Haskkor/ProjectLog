@@ -5,8 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -20,9 +18,8 @@ import javax.persistence.Transient;
 public class Exercise {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "exercise_id")
-	private int id;
+	@Column(columnDefinition = "serial", name = "exercise_id")
+	private Long id;
 	@Column(name = "name")
 	private String name;
 	@ManyToMany(cascade = CascadeType.ALL)
@@ -32,11 +29,11 @@ public class Exercise {
 	@Transient
 	private Set<WorkingSet> workingSets;
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
