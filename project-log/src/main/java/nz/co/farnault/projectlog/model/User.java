@@ -5,6 +5,9 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -22,7 +25,8 @@ import org.springframework.data.annotation.Transient;
 public class User {
 
 	@Id
-	@Column(columnDefinition = "serial", name = "user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
 	private Long id;
 	@Column(name = "email")
 	@Email(message = "*Please provide a valid Email")
@@ -45,7 +49,7 @@ public class User {
 	@Transient
 	private Set<Workout> workouts;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "app_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@JoinTable(name = "app_user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"), foreignKey = @ForeignKey(name = "role_app_user_fkey"), inverseForeignKey = @ForeignKey(name = "app_user_role_fkey"))
 	private Set<Role> roles;
 
 	public Long getId() {

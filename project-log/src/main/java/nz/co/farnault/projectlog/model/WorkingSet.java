@@ -6,6 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -18,17 +21,18 @@ import javax.persistence.Table;
 public class WorkingSet {
 
 	@Id
-	@Column(columnDefinition = "serial", name = "working_set_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "working_set_id")
 	private Long id;
 	@Column(name = "reps")
 	private String reps;
 	@Column(name = "weights")
 	private String weights;
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "workout_working_set", joinColumns = @JoinColumn(name = "working_set_id"), inverseJoinColumns = @JoinColumn(name = "workout_id"))
+	@JoinTable(name = "workout_working_set", joinColumns = @JoinColumn(name = "working_set_id"), inverseJoinColumns = @JoinColumn(name = "workout_id"), foreignKey = @ForeignKey(name = "working_set_workout_fkey"), inverseForeignKey = @ForeignKey(name = "workout_working_set_fkey"))
 	private Set<Workout> workouts;
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "exercise_id")
+	@JoinColumn(name = "exercise_id", foreignKey = @ForeignKey(name = "working_set_exercise_fkey"))
 	private Exercise exercise;
 
 	public Long getId() {

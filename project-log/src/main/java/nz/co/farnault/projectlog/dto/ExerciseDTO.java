@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class ExerciseDTO {
 
-	private int id;
+	private Long id;
 	private String name;
 	private Set<MuscleGroupDTO> muscleGroups;
 	private Set<WorkingSetDTO> workingSets;
@@ -13,7 +13,7 @@ public class ExerciseDTO {
 		super();
 	}
 
-	public ExerciseDTO(int id, String name, Set<MuscleGroupDTO> muscleGroups, Set<WorkingSetDTO> workingSets) {
+	public ExerciseDTO(Long id, String name, Set<MuscleGroupDTO> muscleGroups, Set<WorkingSetDTO> workingSets) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -21,11 +21,11 @@ public class ExerciseDTO {
 		this.workingSets = workingSets;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
