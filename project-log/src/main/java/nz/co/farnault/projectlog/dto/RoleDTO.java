@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class RoleDTO {
 
-	private int id;
+	private Long id;
 	private String name;
 	private Set<UserDTO> users;
 
@@ -12,18 +12,18 @@ public class RoleDTO {
 		super();
 	}
 
-	public RoleDTO(int id, String name, Set<UserDTO> users) {
+	public RoleDTO(Long id, String name, Set<UserDTO> users) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.users = users;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

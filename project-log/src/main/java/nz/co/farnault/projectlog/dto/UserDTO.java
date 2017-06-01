@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class UserDTO {
 
-	private int id;
+	private Long id;
 	private String email;
 	private String password;
 	private String firstName;
@@ -17,7 +17,7 @@ public class UserDTO {
 		super();
 	}
 
-	public UserDTO(int id, String email, String password, String firstName, String lastName, boolean active,
+	public UserDTO(Long id, String email, String password, String firstName, String lastName, boolean active,
 			Set<WorkoutDTO> workouts, Set<RoleDTO> roles) {
 		super();
 		this.id = id;
@@ -30,11 +30,11 @@ public class UserDTO {
 		this.roles = roles;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -13,7 +13,7 @@ public class ExerciseConverter {
 		dto.setId(exercise.getId());
 		dto.setMuscleGroups(MuscleGroupConverter.convertMuscleGroups(exercise.getMuscleGroups()));
 		dto.setName(exercise.getName());
-		dto.setWorkingSets(WorkingSetsConverter.convertWorkingSets(exercise.getWorkingSets()));
+		dto.setWorkingSets(WorkingSetConverter.convertWorkingSets(exercise.getWorkingSets()));
 		return dto;
 	}
 
@@ -22,7 +22,7 @@ public class ExerciseConverter {
 		exercise.setId(dto.getId());
 		exercise.setMuscleGroups(MuscleGroupConverter.convertMuscleGroupDTOs(dto.getMuscleGroups()));
 		exercise.setName(dto.getName());
-		exercise.setWorkingSets(WorkingSetsConverter.convertWorkingSetDTOs(dto.getWorkingSets()));
+		exercise.setWorkingSets(WorkingSetConverter.convertWorkingSetDTOs(dto.getWorkingSets()));
 		return exercise;
 	}
 
